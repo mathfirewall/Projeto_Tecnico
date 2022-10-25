@@ -1,4 +1,4 @@
-# Projeto_Tecnico
+# Projeto_Técnico
  projeto técnico, sistema de livraria
 
  Sistema Para Livraria, utilizando o Framework Angula para o Front End e Java + Spring Boot para o Back End
