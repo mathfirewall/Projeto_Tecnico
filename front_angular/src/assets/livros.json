@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nome_autor": "Mariza",
+    "titulo": "Resident Evil 4",
+    "paginas": 120,
+    "preco": 70.4,
+    "data_cadastro": "20 de outubro de 2022 22:16",
+    "id_autor": 1
+  },
+  {
+    "id": 2,
+    "nome_autor": "Mariza",
+    "titulo": "Resident Evil 5",
+    "paginas": 120,
+    "preco": 90.6,
+    "data_cadastro": "20 de outubro de 2022",
+    "id_autor": 1
+  }
+]

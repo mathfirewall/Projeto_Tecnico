@@ -1,0 +1,67 @@
+<mat-table [dataSource]="livros">
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> ID do Livro </mat-header-cell>
+    <mat-cell *matCellDef="let livros">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+
+      {{livros.id}}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="autor">
+    <mat-header-cell *matHeaderCellDef> Autor </mat-header-cell>
+    <mat-cell *matCellDef="let livros"> {{livros.nome_autor}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="id_autor">
+    <mat-header-cell *matHeaderCellDef> ID Do Autor </mat-header-cell>
+    <mat-cell *matCellDef="let livros"> {{livros.id_autor}} </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="titulo">
+    <mat-header-cell *matHeaderCellDef> Titulo </mat-header-cell>
+    <mat-cell *matCellDef="let livros"> {{livros.titulo}} </mat-cell>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="paginas">
+    <mat-header-cell *matHeaderCellDef> Paginas </mat-header-cell>
+    <mat-cell *matCellDef="let livros"> {{livros.paginas}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="preco">
+    <mat-header-cell *matHeaderCellDef> Preço </mat-header-cell>
+    <mat-cell *matCellDef="let livros"> {{livros.preco}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="data_cadastro">
+    <mat-header-cell *matHeaderCellDef> Data de Cadastro </mat-header-cell>
+    <mat-cell *matCellDef="let livros"> {{livros.data_cadastro}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="acoes">
+    <mat-header-cell *matHeaderCellDef class="action-column">
+      <button mat-mini-fab color="accent" aria-label="Adicionar um Livros">
+        <mat-icon (click)="onAdd()">add</mat-icon>
+      </button>
+
+    </mat-header-cell>
+    <mat-cell *matCellDef="let livros" class="action-column">
+      <button mat-icon-button color="primary" aria-label="Adicionar um Livros">
+        <mat-icon (click)="onEdit(livros)">edit</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn" aria-label="Remover um Livros">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+
+
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let livros; columns: displayedColumns;"></mat-row>
+</mat-table>
