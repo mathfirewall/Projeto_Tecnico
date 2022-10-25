@@ -9,7 +9,7 @@ import { Livrosi } from './../models/livrosi';
 })
 export class LivrosServicesService {
 
-  private readonly API = 'api/livros';
+  private readonly API = 'http://localhost:8080/api/livros';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -45,8 +45,8 @@ export class LivrosServicesService {
   }
 
   delete(id: string){
-    console.log(id);
-    return this.httpClient.delete<Livrosi>(`${this.API}/${id}`).pipe(first());
+    console.log(`${this.API+'/delete?id='}${id}`);
+    return this.httpClient.delete(`${this.API+'/delete?id='}${id}`);
   }
 
 

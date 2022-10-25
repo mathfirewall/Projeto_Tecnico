@@ -17,6 +17,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("api/livros")
 public class LivrosControllers {
 
@@ -75,8 +76,8 @@ public class LivrosControllers {
                 .body("OK");
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable("id") Long id){
+    @DeleteMapping("/delete")
+    public ResponseEntity delete(@RequestParam Long id){
         livrosRepository.deleteById(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
