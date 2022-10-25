@@ -12,7 +12,7 @@
 
  Frot End:
     por motivos de utilização localmente foi utilizado o Proxy do Angula onde as configurações se encontra no proxy-config.json
-    por ponto de problemas com CORS no Java.
+    por conta de problemas com CORS no Java devido a segurança.
 
     para utilizar o Front basta fazer o clone e usar npm install para instalar as dependencias necessarias e 
     após isso utilizar o comando -> npm run start
