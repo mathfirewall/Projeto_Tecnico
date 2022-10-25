@@ -28,18 +28,13 @@ public class LivrosControllers {
     }
 
     @GetMapping("/{id}")
-    public Optional<LivrosModels> findById(@PathVariable Long id) {
-        var pessoa = livrosRepository.findById(id);
-        return pessoa;
+    public ResponseEntity <LivrosModels> findById(@PathVariable Long id) {
+
+        return livrosRepository.findById(id)
+                .map(respostas -> ResponseEntity.ok().body(respostas))
+                .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{titulo}")
-    public List<LivrosRs> findLivros(@PathVariable String titulo){
-        return livrosRepository.findByTitulo(titulo)
-                .stream()
-                .map(LivrosRs::converter)
-                .collect(Collectors.toList());
-    }
 
     @GetMapping
     public @ResponseBody List<LivrosModels> getAll(){

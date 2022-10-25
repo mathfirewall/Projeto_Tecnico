@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface LivrosRepository extends CrudRepository<LivrosModels, Long> {
+public interface LivrosRepository extends JpaRepository<LivrosModels, Long> {
 
-    List<LivrosModels> findByTitulo(String titulo);
+
 
 }
