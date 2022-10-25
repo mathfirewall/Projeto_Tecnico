@@ -52,9 +52,9 @@ export class LivrosComponent implements OnInit {
     this.router.navigate(['edit', livro.id], { relativeTo: this.route })
   }
 
-  onDelete(){
-    //this.livrosservice.delete(id.id);
-    console.log('teste delete');
+  onDelete(livros: Livrosi){
+    this.livrosservice.delete(livros.id);
+    //console.log('teste delete');
   }
 
 }

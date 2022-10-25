@@ -31,9 +31,9 @@ export class LivrosListComponent implements OnInit {
     this.edit.emit(livros);
   }
 
-  onDelete(){
-    this.edit.emit(true)
-    this.snackBar.open('Livro Deletado Com Sucesso!', '', { duration: 2000 });
+  onDelete(livros: Livrosi){
+    this.delet.emit(livros);
+    //this.snackBar.open('Livro Deletado Com Sucesso!', '', { duration: 2000 });
   }
 
 

@@ -45,7 +45,8 @@ export class LivrosServicesService {
   }
 
   delete(id: string){
-    //return this.httpClient.delete<Livrosi>(`${this.API}/${id}`);
+    console.log(id);
+    return this.httpClient.delete<Livrosi>(`${this.API}/${id}`).pipe(first());
   }
 
 

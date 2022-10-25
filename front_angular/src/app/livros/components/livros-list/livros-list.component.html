@@ -55,7 +55,7 @@
       </button>
 
       <button mat-icon-button color="warn" aria-label="Remover um Livros">
-        <mat-icon>delete</mat-icon>
+        <mat-icon (click)="onDelete(livros)">delete</mat-icon>
       </button>
     </mat-cell>
 
