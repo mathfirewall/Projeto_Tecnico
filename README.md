@@ -7,7 +7,7 @@
 
  Back End:
     para rodar o projeto basta ter o JDK 17 instalado em sua maquina se você estiver utilizando a IDE Intellij basta dar Play
-    agora se for ou IDE e utilizar pelo terminal é o comando mvnw spring-boot:run
+    agora se for outra IDE e utilizar pelo terminal é o comando mvnw spring-boot:run
 
 
  Frot End:
