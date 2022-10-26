@@ -1,7 +1,6 @@
 package br.com.evolution.livraria.controllers;
 
 
-import br.com.evolution.livraria.dtos.LivrosRs;
 import br.com.evolution.livraria.models.LivrosModels;
 import br.com.evolution.livraria.repository.LivrosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Controller
 @CrossOrigin(origins = "http://localhost:4200")

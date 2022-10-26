@@ -19,6 +19,8 @@ public class LivrosModels {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "autor_id", length = 155, nullable = false)
+    private Long autor_id;
 
     @Column(name = "titulo", length = 155, nullable = false)
     private String titulo;
@@ -31,6 +33,9 @@ public class LivrosModels {
 
     @Column(name = "data_cadastro", nullable = false)
     private String data_cadastro;
+
+    @Column(name = "data_update", nullable = false)
+    private String data_update;
 
 
 }
