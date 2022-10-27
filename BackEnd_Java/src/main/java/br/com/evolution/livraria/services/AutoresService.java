@@ -17,8 +17,15 @@ public class AutoresService {
     @Autowired
     private AutoresRepository autoresRepository;
 
+
     @Transactional
-    public Page<AutoresDTO> find(PageRequest pageRequest){
+    public AutoresDTO findById(Long id){
+        AutoresModels entity = autoresRepository.findById(id).get();
+        AutoresDTO dto = new AutoresDTO(entity);
+        return dto;
+    }
+    @Transactional
+    public Page<AutoresDTO> findAll(PageRequest pageRequest){
         Page<AutoresModels> list = autoresRepository.findAll(pageRequest);
         return list.map(x -> new AutoresDTO(x));
     }

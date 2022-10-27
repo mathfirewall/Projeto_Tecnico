@@ -1,6 +1,7 @@
 package br.com.evolution.livraria.controllers;
 
 import br.com.evolution.livraria.dtos.AutoresDTO;
+import br.com.evolution.livraria.dtos.LivrosDTO;
 import br.com.evolution.livraria.models.AutoresModels;
 import br.com.evolution.livraria.repository.AutoresRepository;
 import br.com.evolution.livraria.services.AutoresService;
@@ -26,6 +27,12 @@ public class AutoresControllers {
         this.autoresRepository = autoresRepository;
         this.autoresService = autoresService;
     }
+    // consulta por id
+    @GetMapping("/{id}")
+    public @ResponseBody AutoresDTO findById(@PathVariable Long id) {
+
+        return autoresService.findById(id);
+    }
 
     // Consulta Paginada de todos os Autores com os Seus Livros
     @GetMapping
@@ -34,7 +41,7 @@ public class AutoresControllers {
             @RequestParam(value = "size", defaultValue = "10") Integer size
     ){
         PageRequest pageRequest = PageRequest.of(page, size);
-        Page<AutoresDTO> list = autoresService.find(pageRequest);
+        Page<AutoresDTO> list = autoresService.findAll(pageRequest);
         //System.out.println(livrosService);
         return ResponseEntity.ok(list);
     }
