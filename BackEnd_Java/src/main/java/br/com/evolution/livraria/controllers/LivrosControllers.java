@@ -70,8 +70,7 @@ public class LivrosControllers {
                 DateFormat.SHORT).format(agora);
         Optional<AutoresModels> autorid = autoresRepository.findById(livrosRs.getId_autor());
 
-        //livrosModels.setData_cadastro(dateToStr);
-        //livrosRs.setNome_autor();
+
         var l = new LivrosModels();
         l.setTitulo(livrosRs.getTitulo());
         l.setAutor(autorid.get());
