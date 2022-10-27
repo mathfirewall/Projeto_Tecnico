@@ -15,10 +15,12 @@ import { Livrosi } from '../../models/livrosi';
 export class LivrosFormComponent implements OnInit {
 
   form = this.formBuilder.group( {
-    id:       [''],
-    titulo:   [''],
-    paginas:  [''],
-    preco:    ['']
+    id:         [''],
+    titulo:     [''],
+    id_autor:   [''],
+    nome_autor: [''],
+    paginas:    [''],
+    preco:      ['']
   });
 
   constructor(
@@ -36,10 +38,12 @@ export class LivrosFormComponent implements OnInit {
 
     const livro: Livrosi = this.route.snapshot.data['livros'];
     this.form.setValue( {
-      id:       livro.id,
-      titulo:   livro.titulo,
-      paginas:  livro.paginas,
-      preco:    livro.preco
+      id:         livro.id,
+      titulo:     livro.titulo,
+      id_autor:   livro.id_autor,
+      nome_autor: livro.nome_autor,
+      paginas:    livro.paginas,
+      preco:      livro.preco
     });
   }
 

@@ -9,13 +9,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./livros-list.component.scss']
 })
 export class LivrosListComponent implements OnInit {
+[x: string]: any;
 
   @Input() livros: Livrosi[] = [];
   @Output() add = new EventEmitter(false);
   @Output() edit = new EventEmitter(false);
   @Output() delet = new EventEmitter(false);
 
-  readonly displayedColumns = ['id', 'autor', 'titulo', 'paginas', 'preco', 'data_cadastro', 'acoes'];
+  readonly displayedColumns = ['autor', 'titulo', 'paginas', 'preco', 'data_cadastro', 'acoes'];
   showFirstLastButtons = [];
 
   constructor(private snackBar: MatSnackBar,) { }

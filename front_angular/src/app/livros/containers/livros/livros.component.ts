@@ -50,6 +50,7 @@ export class LivrosComponent implements OnInit {
 
   onEdit(livro: Livrosi){
     this.router.navigate(['edit', livro.id], { relativeTo: this.route })
+    console.log(livro);
   }
 
   onDelete(livros: Livrosi){

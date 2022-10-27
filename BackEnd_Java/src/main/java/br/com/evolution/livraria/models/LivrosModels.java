@@ -2,14 +2,10 @@ package br.com.evolution.livraria.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
 @Data
+@Entity
 @Table(name = "livros")
 public class LivrosModels {
 
@@ -19,8 +15,10 @@ public class LivrosModels {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "autor_id", length = 155, nullable = false)
-    private Long autor_id;
+
+    @ManyToOne
+    @JoinColumn(name = "autor_id")
+    private AutoresModels autor;
 
     @Column(name = "titulo", length = 155, nullable = false)
     private String titulo;
@@ -33,9 +31,6 @@ public class LivrosModels {
 
     @Column(name = "data_cadastro", nullable = false)
     private String data_cadastro;
-
-    @Column(name = "data_update", nullable = false)
-    private String data_update;
 
 
 }
