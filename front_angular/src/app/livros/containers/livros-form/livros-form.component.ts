@@ -12,7 +12,11 @@ import { Livrosi } from '../../models/livrosi';
   templateUrl: './livros-form.component.html',
   styleUrls: ['./livros-form.component.scss']
 })
+
+
 export class LivrosFormComponent implements OnInit {
+
+  teste = ["Marina", "Silva", "Joana", "Brisa"];
 
   form = this.formBuilder.group( {
     id:         [''],

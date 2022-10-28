@@ -13,7 +13,7 @@
         <mat-label>Autor</mat-label>
         <mat-select formControlName="nome_autor">
           <mat-option value="null"></mat-option>
-          <mat-option *ngForOf=" let nome of nome_autor" value="nome_autor">{{ nome }}</mat-option>
+          <mat-option *ngFor=" let nome_autor" value="nome_autor">{{ nome_autor }}</mat-option>
           <!-- Parei nete ponto -->
         </mat-select>
 
