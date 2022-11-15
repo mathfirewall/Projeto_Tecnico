@@ -22,6 +22,16 @@ export class LivrosServicesService {
     );
   }
 
+
+  listarAutor() {
+    return this.httpClient.get<any>("http://localhost:8080/api/autores")
+    .pipe(
+      first(),
+      //delay(500),
+      //tap(livros => console.log(livros))
+    );
+  }
+
   loadById(id: string){
     return this.httpClient.get<Livrosi>(`${this.API}/${id}`);
   }

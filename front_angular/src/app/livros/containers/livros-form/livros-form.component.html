@@ -11,9 +11,8 @@
 
       <mat-form-field class="full-width">
         <mat-label>Autor</mat-label>
-        <mat-select formControlName="nome_autor">
-          <mat-option value="null"></mat-option>
-          <mat-option *ngFor=" let nome_autor" value="nome_autor">{{ nome_autor }}</mat-option>
+        <mat-select formControlName="id_autor">
+          <mat-option *ngFor=" let autor of listaautor" [value]="autor.id">{{ autor.nome }}</mat-option>
           <!-- Parei nete ponto -->
         </mat-select>
 

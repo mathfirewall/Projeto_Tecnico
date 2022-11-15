@@ -16,15 +16,14 @@ import { Livrosi } from '../../models/livrosi';
 
 export class LivrosFormComponent implements OnInit {
 
-  teste = ["Marina", "Silva", "Joana", "Brisa"];
 
-  form = this.formBuilder.group( {
-    id:         [''],
-    titulo:     [''],
-    id_autor:   [''],
-    nome_autor: [''],
-    paginas:    [''],
-    preco:      ['']
+  listaautor: any[] = [];
+  form = this.formBuilder.group({
+    id: [''],
+    titulo: [''],
+    id_autor: [''],
+    paginas: [''],
+    preco: ['']
   });
 
   constructor(
@@ -36,39 +35,44 @@ export class LivrosFormComponent implements OnInit {
 
     //this.form =
 
-   }
+  }
 
   ngOnInit(): void {
+    this.livroService.listarAutor().subscribe((lista: any) => {
+      this.listaautor = lista.content;
 
-    const livro: Livrosi = this.route.snapshot.data['livros'];
-    this.form.setValue( {
-      id:         livro.id,
-      titulo:     livro.titulo,
-      id_autor:   livro.id_autor,
-      nome_autor: livro.nome_autor,
-      paginas:    livro.paginas,
-      preco:      livro.preco
+      const livro: Livrosi = this.route.snapshot.data['livros'];
+      this.form.setValue({
+        id: livro.id,
+        titulo: livro.titulo,
+        id_autor: livro.id_autor,
+        paginas: livro.paginas,
+        preco: livro.preco
+      });
+
     });
+
+
   }
 
-  onSubmit(){
+  onSubmit() {
     this.livroService.salvar(this.form.value)
-    .subscribe(result =>{
-      this.onSuccess()
-    },
-      error => this.onError());
+      .subscribe(result => {
+        this.onSuccess()
+      },
+        error => this.onError());
   }
 
-  onCancel(){
+  onCancel() {
     this.location.back();
   }
 
-  private onSuccess(){
+  private onSuccess() {
     this.snackBar.open('Livro Adicionado Com Sucesso!', '', { duration: 2000 });
     this.onCancel();
   }
 
-  private onError(){
+  private onError() {
     this.snackBar.open('Erro ao Salvar', '', { duration: 1000 });
   }
 
