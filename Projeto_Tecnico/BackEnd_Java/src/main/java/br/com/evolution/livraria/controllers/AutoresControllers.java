@@ -16,7 +16,7 @@ import java.text.DateFormat;
 import java.util.Date;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/autores")
 public class AutoresControllers {
 
