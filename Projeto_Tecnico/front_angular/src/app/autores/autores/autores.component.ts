@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AutorServiceService } from '../services/autor-service.service';
 
 @Component({
   selector: 'app-autores',
@@ -7,15 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AutoresComponent implements OnInit {
 
-  dataAutores: any[] = [
-    { id: "1", name: "Teste", origem: "Brasil", date: "17/01/2023"}
-  ];
+  dataAutores: any[] = [];
   displayedColumns = ['id', 'name', 'origem', 'datecreate']
-  constructor() {
+
+
+  constructor(private autorService: AutorServiceService) {
     //this.dataAutores = []
+
+
    }
 
   ngOnInit(): void {
+
+    this.autorService.getAll().subscribe((lista: any) =>
+      this.dataAutores = lista.content
+    );
   }
 
 }
