@@ -51,12 +51,13 @@ export class LivrosServicesService {
   }
 
   private update(dadosForm: Partial<Livrosi>){
+    console.log(dadosForm)
     return this.httpClient.put<Livrosi>(`${this.API}/${dadosForm.id}`, dadosForm).pipe(first());
   }
 
-  delete(id: string){
-    console.log(`${this.API+'/delete?id='}${id}`);
-    return this.httpClient.delete(`${this.API+'/delete?id='}${id}`);
+  delete(id: String){
+    console.log(`${this.API}/${id}`);
+    return this.httpClient.delete(`${this.API}/${id}`).pipe(first());
   }
 
 

@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-livros',
@@ -22,7 +23,8 @@ export class LivrosComponent implements OnInit {
     private livrosservice: LivrosServicesService,
     public dialog: MatDialog,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar) {
 
     this.livros$ = this.livrosservice.listar()
       .pipe(
@@ -53,11 +55,11 @@ export class LivrosComponent implements OnInit {
     console.log(livro);
   }
 
-  onDelete(livros: Livrosi){
-    this.livrosservice.delete(livros.id)
-    this.router.navigate(['/'], { relativeTo: this.route })
-
-    //console.log('teste delete');
+  onDelete(livro: Livrosi){
+    this.livrosservice.delete(livro.id).subscribe()
+    this.snackBar.open('Livro Deletado Com Sucesso!', '', { duration: 2000 });
+    this.router.navigate([''], { relativeTo: this.route })
+    console.log(livro.id);
   }
 
 }

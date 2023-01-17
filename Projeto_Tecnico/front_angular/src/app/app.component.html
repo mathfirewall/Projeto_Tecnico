@@ -1,5 +1,11 @@
-<mat-toolbar color="primary">
-  <span>Livraria Cal Comp</span>
+<mat-toolbar color="primary" class="mat-elavation-z8">
+  <span><mat-icon>eco</mat-icon> Livraria</span>
+  <div class="spacer"></div>
+
+  <a mat-button routerLink="#">Home</a>
+  <a mat-button routerLink="autores">Autores</a>
+  <a mat-button routerLink="livros">Livros</a>
+
 </mat-toolbar>
 
 <router-outlet></router-outlet>

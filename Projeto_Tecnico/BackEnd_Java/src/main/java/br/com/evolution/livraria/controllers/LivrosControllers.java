@@ -84,18 +84,19 @@ public class LivrosControllers {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity update(@PathVariable("id") Long id, @RequestBody LivrosModels livrosModels) throws Exception{
+    public ResponseEntity update(@PathVariable("id") Long id, @RequestBody LivrosRs livrosRs) throws Exception{
         var p = livrosRepository.findById(id);
-
+        Optional<AutoresModels> autorid = autoresRepository.findById(livrosRs.getId_autor());
         Date agora = new Date();
         String dateToStr = DateFormat.getDateTimeInstance(DateFormat.LONG,
                 DateFormat.SHORT).format(agora);
 
         if (p.isPresent()){
             var pessoaSave = p.get();
-            pessoaSave.setTitulo(livrosModels.getTitulo());
-            pessoaSave.setPaginas(livrosModels.getPaginas());
-            pessoaSave.setPreco(livrosModels.getPreco());
+            pessoaSave.setAutor(autorid.get());
+            pessoaSave.setTitulo(livrosRs.getTitulo());
+            pessoaSave.setPaginas(livrosRs.getPaginas());
+            pessoaSave.setPreco(livrosRs.getPreco());
             pessoaSave.setData_cadastro(dateToStr);
             livrosRepository.save(pessoaSave);
 

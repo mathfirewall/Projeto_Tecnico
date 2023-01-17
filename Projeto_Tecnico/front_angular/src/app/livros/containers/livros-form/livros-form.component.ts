@@ -19,11 +19,12 @@ export class LivrosFormComponent implements OnInit {
 
   listaautor: any[] = [];
   form = this.formBuilder.group({
-    id: [''],
-    titulo: [''],
-    id_autor: [''],
-    paginas: [''],
-    preco: ['']
+    id:         [''],
+    titulo:     [''],
+    nome_autor: [''],
+    id_autor:   [''],
+    paginas:    [''],
+    preco:      ['']
   });
 
   constructor(
@@ -45,6 +46,7 @@ export class LivrosFormComponent implements OnInit {
       this.form.setValue({
         id: livro.id,
         titulo: livro.titulo,
+        nome_autor: livro.nome_autor,
         id_autor: livro.id_autor,
         paginas: livro.paginas,
         preco: livro.preco
@@ -58,9 +60,9 @@ export class LivrosFormComponent implements OnInit {
   onSubmit() {
     this.livroService.salvar(this.form.value)
       .subscribe(result => {
-        this.onSuccess()
+        this.onError();
       },
-        error => this.onError());
+        () => this.onSuccess());
   }
 
   onCancel() {
