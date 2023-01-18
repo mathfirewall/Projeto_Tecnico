@@ -6,11 +6,13 @@ import { AutoresComponent } from './autores/autores.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppMaterialModule } from '../shared/app-material/app-material.module';
 import { SharedModule } from '../shared/shared.module';
+import { FormsComponent } from './forms/forms.component';
 
 
 @NgModule({
   declarations: [
-    AutoresComponent
+    AutoresComponent,
+    FormsComponent
   ],
   imports: [
     CommonModule,

@@ -1,1 +1,62 @@
-<p>autores works!</p>
+<mat-card>
+
+  <mat-toolbar color="primary">Autores Cadastrados</mat-toolbar>
+
+<div>
+  <table mat-table [dataSource]="dataAutores$" class="mat-elevation-z8">
+
+    <!-- Id do Registro -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Nome do Autor -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+    </ng-container>
+
+    <!-- Origem onde o País do Autor -->
+    <ng-container matColumnDef="origem">
+      <th mat-header-cell *matHeaderCellDef> Origem </th>
+      <td mat-cell *matCellDef="let element"> {{element.origem}} </td>
+    </ng-container>
+
+    <!-- Data da Criação -->
+    <ng-container matColumnDef="data_criacao">
+      <th mat-header-cell *matHeaderCellDef> Data de Inclusão </th>
+      <td mat-cell *matCellDef="let element"> {{element.data_cadastro}} </td>
+    </ng-container>
+    <!-- Botões de Ações-->
+    <ng-container matColumnDef="acoes">
+      <mat-header-cell *matHeaderCellDef class="action-column">
+        <button mat-mini-fab color="accent" aria-label="Adicionar um Autor">
+          <mat-icon (click)="onAdd()">add</mat-icon>
+        </button>
+
+      </mat-header-cell>
+      <mat-cell *matCellDef="let livros" class="action-column">
+        <button mat-icon-button color="primary" aria-label="Editar Um Autor">
+          <mat-icon (click)="onEdit()">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" aria-label="Remover Um Autor">
+          <mat-icon (click)="onDelete()">delete</mat-icon>
+        </button>
+      </mat-cell>
+
+
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+  <ng-template #loading>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+
+
+</mat-card>
