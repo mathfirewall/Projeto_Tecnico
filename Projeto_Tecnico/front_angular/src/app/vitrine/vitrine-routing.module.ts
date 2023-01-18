@@ -1,14 +1,13 @@
+import { VitrineComponent } from './vitrine/vitrine.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AutoresComponent } from './autores/autores.component';
-
 const routes: Routes = [
-  { path: '', component: AutoresComponent }
+  {path: '', component: VitrineComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AutoresRoutingModule { }
+export class VitrineRoutingModule { }

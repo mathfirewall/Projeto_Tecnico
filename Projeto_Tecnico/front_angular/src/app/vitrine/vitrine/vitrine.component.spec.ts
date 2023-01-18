@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AutoresListComponent } from './autores-list.component';
+import { VitrineComponent } from './vitrine.component';
 
-describe('AutoresListComponent', () => {
-  let component: AutoresListComponent;
-  let fixture: ComponentFixture<AutoresListComponent>;
+describe('VitrineComponent', () => {
+  let component: VitrineComponent;
+  let fixture: ComponentFixture<VitrineComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AutoresListComponent ]
+      declarations: [ VitrineComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AutoresListComponent);
+    fixture = TestBed.createComponent(VitrineComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
