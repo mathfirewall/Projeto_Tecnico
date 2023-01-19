@@ -34,7 +34,7 @@ export class AutoresComponent implements OnInit {
   }
 
   onEdit(dataAutores: Model){
-    this.router.navigate(['edit', dataAutores], { relativeTo: this.route })
+    this.router.navigate(['edit', dataAutores.id], { relativeTo: this.route })
   }
 
   onDelete(id: Model){

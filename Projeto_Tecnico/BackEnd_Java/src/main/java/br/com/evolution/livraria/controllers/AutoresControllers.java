@@ -1,7 +1,6 @@
 package br.com.evolution.livraria.controllers;
 
 import br.com.evolution.livraria.dtos.AutoresDTO;
-import br.com.evolution.livraria.dtos.LivrosDTO;
 import br.com.evolution.livraria.models.AutoresModels;
 import br.com.evolution.livraria.repository.AutoresRepository;
 import br.com.evolution.livraria.services.AutoresService;
@@ -55,5 +54,13 @@ public class AutoresControllers {
         autoresModels.setData_cadastro(dateToStr);
         return ResponseEntity.status(HttpStatus.CREATED).
                 body(autoresRepository.save(autoresModels));
+    }
+
+    @PutMapping("/{id}")
+    public AutoresModels updateAll(
+            @PathVariable("id") Long id){
+        var p = autoresRepository.findById(id);
+        System.out.println(p.toString());
+        return null;
     }
 }

@@ -4,6 +4,7 @@ import { NonNullableFormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { AutorsService } from '../../services/autors.service';
+import { Model } from '../../models/model';
 
 @Component({
   selector: 'app-forms',
@@ -27,6 +28,13 @@ export class FormsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    const dataResolver: Model = this.route.snapshot.data['dataResolve']
+    this.form.setValue({
+      id: dataResolver.id,
+      nome: dataResolver.nome,
+      origem: dataResolver.origem
+    })
   }
 
   onSubmit() {

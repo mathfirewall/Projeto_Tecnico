@@ -19,6 +19,10 @@ export class AutorsService {
     );
   }
 
+  getById(id: string){
+    return this.httpClient.get<Model>(`${this.API}/${id}`);
+  }
+
   saveAll(dadosForm: Partial<Model>){
     if(dadosForm.id){
       //console.log('update')
