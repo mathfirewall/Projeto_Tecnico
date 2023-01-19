@@ -20,7 +20,21 @@ export class AutorsService {
   }
 
   saveAll(dadosForm: Partial<Model>){
+    if(dadosForm.id){
+      //console.log('update')
+      return this.update(dadosForm);
+    }
+    //console.log('create')
+    return this.create(dadosForm);
+  }
+
+  private create(dadosForm: Partial<Model>){
     return this.httpClient.post<Model>(this.API, dadosForm).pipe(first());
+  }
+
+  private update(dadosForm: Partial<Model>){
+    console.log(dadosForm)
+    return this.httpClient.put<Model>(`${this.API}/${dadosForm.id}`, dadosForm).pipe(first());
   }
 
 }

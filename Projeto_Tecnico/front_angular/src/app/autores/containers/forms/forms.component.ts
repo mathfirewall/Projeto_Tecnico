@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { AutorsService } from '../services/autors.service';
+import { AutorsService } from '../../services/autors.service';
 
 @Component({
   selector: 'app-forms',
@@ -33,9 +33,9 @@ export class FormsComponent implements OnInit {
     //console.log(this.form.value)
     this.autorsSerivce.saveAll(this.form.value)
       .subscribe(result => {
-        this.onError();
+        this.onSuccess();
       },
-        () => this.onSuccess());
+        () => this.onError());
   }
 
   onCancel() {
@@ -43,12 +43,12 @@ export class FormsComponent implements OnInit {
   }
 
   private onSuccess() {
-    this.snackBar.open('Livro Adicionado Com Sucesso!', '', { duration: 2000 });
+    this.snackBar.open('Autor Adicionado Com Sucesso!', '', { duration: 3000 });
     this.onCancel();
   }
 
   private onError() {
-    this.snackBar.open('Erro ao Salvar', '', { duration: 1000 });
+    this.snackBar.open('Erro ao Salvar Autor', '', { duration: 2000 });
   }
 
 }

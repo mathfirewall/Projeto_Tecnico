@@ -1,7 +1,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { AutorsService } from '../services/autors.service';
-import { Model } from '../models/model';
+import { AutorsService } from '../../services/autors.service';
+import { Model } from '../../models/model';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class AutoresComponent implements OnInit {
 
   dataAutores$!: Observable<Model[]>;
-  displayedColumns = ['nome', 'origem', 'data_criacao', 'acoes'];
+
 
 
   constructor(
@@ -33,12 +33,12 @@ export class AutoresComponent implements OnInit {
     this.router.navigate(['new'], { relativeTo: this.route })
   }
 
-  onEdit(){
-    console.log("teste btn editar")
+  onEdit(dataAutores: Model){
+    this.router.navigate(['edit', dataAutores], { relativeTo: this.route })
   }
 
-  onDelete(){
-    console.log("teste btn deletar")
+  onDelete(id: Model){
+    console.log(id)
   }
 
 }

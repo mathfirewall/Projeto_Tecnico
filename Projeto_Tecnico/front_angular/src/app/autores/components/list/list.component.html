@@ -1,0 +1,49 @@
+<mat-table [dataSource]="dataAutores$">
+
+    <!-- Id do Registro -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Nome do Autor -->
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+    </ng-container>
+
+    <!-- Origem onde o País do Autor -->
+    <ng-container matColumnDef="origem">
+      <mat-header-cell *matHeaderCellDef> Origem </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.origem}} </mat-cell>
+    </ng-container>
+
+    <!-- Data da Criação -->
+    <ng-container matColumnDef="data_criacao">
+      <mat-header-cell *matHeaderCellDef> Data de Inclusão </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.data_cadastro}} </mat-cell>
+    </ng-container>
+    <!-- Botões de Ações-->
+    <ng-container matColumnDef="acoes">
+      <mat-header-cell *matHeaderCellDef class="action-column-header">
+        <button mat-mini-fab color="accent" aria-label="Adicionar um Autor">
+          <mat-icon (click)="onAdd()">add</mat-icon>
+        </button>
+
+      </mat-header-cell>
+      <mat-cell *matCellDef="let dataAutores" class="action-column">
+        <button mat-icon-button color="primary" aria-label="Editar Um Autor">
+          <mat-icon (click)="onEdit(dataAutores)">edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" aria-label="Remover Um Autor">
+          <mat-icon (click)="onDelete(dataAutores)">delete</mat-icon>
+        </button>
+      </mat-cell>
+
+
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
