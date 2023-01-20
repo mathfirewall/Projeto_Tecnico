@@ -64,52 +64,21 @@ public class LivrosControllers {
     }
 
     @PostMapping
-    public ResponseEntity saveAll(@RequestBody LivrosRs livrosRs){
-        Date agora = new Date();
-        String dateToStr = DateFormat.getDateTimeInstance(DateFormat.LONG,
-                DateFormat.SHORT).format(agora);
-        Optional<AutoresModels> autorid = autoresRepository.findById(livrosRs.getId_autor());
-
-
-        var l = new LivrosModels();
-        l.setTitulo(livrosRs.getTitulo());
-        l.setAutor(autorid.get());
-        l.setPaginas(livrosRs.getPaginas());
-        l.setPreco(livrosRs.getPreco());
-        l.setData_cadastro(dateToStr);
-
-        livrosRepository.save(l);
+    public ResponseEntity saveAll(@RequestBody LivrosDTO livrosDTO){
+        livrosService.create(livrosDTO);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("OK");
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity update(@PathVariable("id") Long id, @RequestBody LivrosRs livrosRs) throws Exception{
-        var p = livrosRepository.findById(id);
-        Optional<AutoresModels> autorid = autoresRepository.findById(livrosRs.getId_autor());
-        Date agora = new Date();
-        String dateToStr = DateFormat.getDateTimeInstance(DateFormat.LONG,
-                DateFormat.SHORT).format(agora);
-
-        if (p.isPresent()){
-            var pessoaSave = p.get();
-            pessoaSave.setAutor(autorid.get());
-            pessoaSave.setTitulo(livrosRs.getTitulo());
-            pessoaSave.setPaginas(livrosRs.getPaginas());
-            pessoaSave.setPreco(livrosRs.getPreco());
-            pessoaSave.setData_cadastro(dateToStr);
-            livrosRepository.save(pessoaSave);
-
-        }else {
-            throw new Exception("Nada Encontrado");
-        }
-        return ResponseEntity.status(HttpStatus.OK)
-                .body("OK");
+    public ResponseEntity update(@PathVariable("id") Long id, @RequestBody LivrosDTO livrosDTO) throws Exception{
+        livrosService.update(id, livrosDTO);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity delete(@PathVariable("id") Long id){
-        livrosRepository.deleteById(id);
+        livrosService.delete(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }

@@ -58,9 +58,9 @@ export class LivrosFormComponent implements OnInit {
   onSubmit() {
     this.livroService.salvar(this.form.value)
       .subscribe(result => {
-        this.onError();
+        this.onSuccess();
       },
-        () => this.onSuccess());
+        () => this.onError());
   }
 
   onCancel() {
