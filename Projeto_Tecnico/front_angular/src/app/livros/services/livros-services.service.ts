@@ -57,7 +57,7 @@ export class LivrosServicesService {
 
   delete(id: String){
     console.log(`${this.API}/${id}`);
-    return this.httpClient.delete(`${this.API}/${id}`).pipe(first());
+    return this.httpClient.delete(`${this.API}/${id}`);
   }
 
 

@@ -58,7 +58,7 @@ export class LivrosComponent implements OnInit {
   onDelete(livro: Livrosi){
     this.livrosservice.delete(livro.id).subscribe()
     this.snackBar.open('Livro Deletado Com Sucesso!', '', { duration: 2000 });
-    this.router.navigate([''], { relativeTo: this.route })
+    this.router.navigate(['livros/'])
     console.log(livro.id);
   }
 

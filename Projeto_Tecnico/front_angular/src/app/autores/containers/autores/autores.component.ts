@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AutorsService } from '../../services/autors.service';
@@ -17,6 +18,7 @@ export class AutoresComponent implements OnInit {
 
   constructor(
     private autorsSerivce: AutorsService,
+    private snackBar: MatSnackBar,
     private router: Router,
     private route: ActivatedRoute,) {
 
@@ -37,8 +39,10 @@ export class AutoresComponent implements OnInit {
     this.router.navigate(['edit', dataAutores.id], { relativeTo: this.route })
   }
 
-  onDelete(id: Model){
-    console.log(id)
+  onDelete(dataAutores: Model){
+    this.autorsSerivce.delete(dataAutores.id).subscribe()
+    this.snackBar.open('Autor Deletado Com Sucesso!', '', { duration: 2000 });
+    this.router.navigate(['/'])
   }
 
 }

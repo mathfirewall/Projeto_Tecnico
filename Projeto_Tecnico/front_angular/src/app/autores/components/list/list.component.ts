@@ -29,8 +29,8 @@ export class ListComponent implements OnInit {
     this.edit.emit(dataAutores)
   }
 
-  onDelete(id: Model){
-    this.delet.emit(id.id)
+  onDelete(dataAutores: Model){
+    this.delet.emit(dataAutores)
   }
 
 }

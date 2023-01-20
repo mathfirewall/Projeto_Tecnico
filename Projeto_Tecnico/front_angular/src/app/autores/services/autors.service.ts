@@ -37,8 +37,13 @@ export class AutorsService {
   }
 
   private update(dadosForm: Partial<Model>){
-    console.log(dadosForm)
+    //console.log(dadosForm)
     return this.httpClient.put<Model>(`${this.API}/${dadosForm.id}`, dadosForm).pipe(first());
+  }
+
+  delete(id: String){
+    //console.log(`${this.API}/${id}`);
+    return this.httpClient.delete(`${this.API}/${id}`);
   }
 
 }

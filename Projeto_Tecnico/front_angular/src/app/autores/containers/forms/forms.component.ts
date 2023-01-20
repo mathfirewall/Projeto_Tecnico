@@ -16,7 +16,7 @@ export class FormsComponent implements OnInit {
   form = this.formBuilder.group({
     id:     [''],
     nome:   [''],
-    origem: ['']
+    origem: [''],
   });
 
   constructor(
@@ -29,12 +29,12 @@ export class FormsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const dataResolver: Model = this.route.snapshot.data['dataResolve']
+    const dataResolver: Model = this.route.snapshot.data['dataResolve'];
     this.form.setValue({
-      id: dataResolver.id,
-      nome: dataResolver.nome,
+      id:     dataResolver.id,
+      nome:   dataResolver.nome,
       origem: dataResolver.origem
-    })
+    });
   }
 
   onSubmit() {

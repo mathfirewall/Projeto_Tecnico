@@ -46,21 +46,21 @@ public class AutoresControllers {
     }
     // cadastro de Autores
     @PostMapping
-    public ResponseEntity<AutoresModels> saveAll(@RequestBody AutoresModels autoresModels){
-        Date agora = new Date();
-        String dateToStr = DateFormat.getDateTimeInstance(DateFormat.LONG,
-                DateFormat.SHORT).format(agora);
+    public ResponseEntity<AutoresModels> saveAll(@RequestBody AutoresDTO autoresDTO){
 
-        autoresModels.setData_cadastro(dateToStr);
-        return ResponseEntity.status(HttpStatus.CREATED).
-                body(autoresRepository.save(autoresModels));
+        autoresService.create(autoresDTO);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public AutoresModels updateAll(
-            @PathVariable("id") Long id){
-        var p = autoresRepository.findById(id);
-        System.out.println(p.toString());
-        return null;
+    public ResponseEntity<AutoresDTO> update(@PathVariable("id") Long id, @RequestBody AutoresDTO autoresDTO) throws Exception{
+        autoresService.updateAll(id, autoresDTO);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable("id") Long id){
+        autoresService.delete(id);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }

@@ -7,7 +7,7 @@ import { AutorsResolver } from './guards/autors.resolver';
 
 const routes: Routes = [
   { path: '', component: AutoresComponent },
-  { path: 'new', component: FormsComponent},
+  { path: 'new', component: FormsComponent, resolve: {dataResolve: AutorsResolver}},
   { path: 'edit/:id', component: FormsComponent, resolve: {dataResolve: AutorsResolver}}
 ];
 

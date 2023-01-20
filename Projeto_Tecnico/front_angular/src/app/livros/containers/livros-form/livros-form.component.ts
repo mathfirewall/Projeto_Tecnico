@@ -34,8 +34,6 @@ export class LivrosFormComponent implements OnInit {
     private location: Location,
     private route: ActivatedRoute) {
 
-    //this.form =
-
   }
 
   ngOnInit(): void {
